@@ -64,8 +64,14 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                    // SI NO LOS INDICES ELEGIDOS NO COINCIDEN CON LOS MOSTRADOS 
                     List<string> indicesRepetidos = indicesMostrados.Intersect(indicesSinComa).ToList();
+                    if (indicesSinComa.GroupBy(n => n).Any(c => c.Count() > 1))
+                    {
+                        Console.WriteLine("No puede seleccionar un mismo curso más de una vez" + Environment.NewLine);
+                        return false;
+                    }
+                    
+                    // SI NO LOS INDICES ELEGIDOS NO COINCIDEN CON LOS MOSTRADOS 
                     if (indicesRepetidos.Count != indicesSinComa.Count)
                     {
                         Console.WriteLine("Debes elegir materias que esten en la lista" + Environment.NewLine);
@@ -76,11 +82,6 @@ namespace ConsoleApp1
 
                
                      
-                    if (indicesSinComa.GroupBy(n => n).Any(c => c.Count() > 1))
-                    {
-                        Console.WriteLine("No puede seleccionar un mismo curso más de una vez" + Environment.NewLine);
-                        return false;
-                    }
                     List<string> indicesDuplicados = indicesSeleccionados.Intersect(indicesSinComa).ToList();
                     if (indicesDuplicados.Count > 0)
                     {
