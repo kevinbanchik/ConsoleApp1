@@ -95,7 +95,11 @@ namespace ConsoleApp1
             } 
             else
             {
-                // TO DO: falta que validar que exista en la lista mostrada cuando se ingresa solo un digito
+                if (!indicesMostrados.Contains(indicesIngresados))
+                {
+                    Console.WriteLine("La materia con identificador " + indicesIngresados + " no está en la lista mostrada" + Environment.NewLine);
+                    return false;
+                }
                 if (indicesSeleccionados.Contains(indicesIngresados)) 
                 {
                     Console.WriteLine("Ya elegiste la materia con identificador " + indicesIngresados + Environment.NewLine);
