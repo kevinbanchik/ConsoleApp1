@@ -10,32 +10,47 @@ namespace ConsoleApp1
     {
         public static int indiceAlumnoLogueado;
         public static string registroIngresado;
-        public static bool existeAlumno(List<string[]> maestroAlumnos)
+        public static bool existeAlumno(string registroIngresado, List<string[]> maestroAlumnos)
         {
-            Console.WriteLine("Ingresá tu número de registro");
-            registroIngresado = Console.ReadLine();
-            bool existe = false;
             int i = 0;
             foreach (var alumno in maestroAlumnos)
             {
                 if (registroIngresado == alumno[2])
                 {
-                    existe = true;
                     indiceAlumnoLogueado = i;
+                    return true;
                 }
                 else
                 {
                     i++;
                 }
             }
-            if (existe == true)
+            return false;
+        }
+
+        public static bool registroEsValido(string registroIngresado)
+        {
+            if (registroIngresado.Length > 6 )
             {
-                return true;
-            }
-            else
-            {
+                Console.WriteLine("El registro solo puede tener hasta 6 digitos numéricos");
                 return false;
             }
+            if (!int.TryParse(registroIngresado, out int registroEnFormatoNumerico))
+            {
+                Console.WriteLine("El registro solo puede contener caracteres numéricos");
+                return false;
+            }
+            if (registroEnFormatoNumerico < 1 || registroEnFormatoNumerico > 999999)
+            {
+                Console.WriteLine("El registro tiene que ser mayor a 1 y menor a 999999");
+                return false;
+            }
+            if (!existeAlumno(registroIngresado, Helper.listaMaestroAlumnos))
+            {
+                Console.WriteLine("No existe ningún alumno con ese número de registro. Ingreselo nuevamente.");
+                return false;
+            }
+            return true;
         }
     }
 }
