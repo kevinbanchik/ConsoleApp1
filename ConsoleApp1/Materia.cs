@@ -34,25 +34,6 @@ namespace ConsoleApp1
             Console.WriteLine(Environment.NewLine);
         }
 
-        public static bool quiereAnotarse()
-        {
-            // MUESTRA CANTIDAD DE MATERIAS POSIBLES PARA INSCRIBIRSE
-            // PRESIONA 'ENTER' SI QUIERE ANOTARSE
-            Console.WriteLine(Environment.NewLine + "Te quedan " + (3 - indicesSeleccionados.Count).ToString() + " materia/s para elegir" + Environment.NewLine);
-            Console.WriteLine("Queres anotarte? Presiona Enter");
-            ConsoleKeyInfo tecla = Console.ReadKey();
-            if (Equals(ConsoleKey.Enter, tecla.Key))
-            {
-                //Console.WriteLine(Environment.NewLine + "apretaste enter " + tecla.Key);
-                return true;
-            }
-            else
-            {
-                //Console.WriteLine(Environment.NewLine + "apretaste " + tecla.Key);
-                return false;
-            }
-        }
-
         public static void elegirMaterias()
         {
             verMateriasParaAlumno();
