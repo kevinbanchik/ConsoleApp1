@@ -9,7 +9,7 @@ namespace ConsoleApp1
     static class Alumno
     {
         public static int indiceAlumnoLogueado;
-        public static string registroIngresado;
+        public static string registroSeleccionado;
         public static bool existeAlumno(string registroIngresado, List<string[]> maestroAlumnos)
         {
             int i = 0;
@@ -50,6 +50,7 @@ namespace ConsoleApp1
                 Console.WriteLine("No existe ningún alumno con ese número de registro. Ingreselo nuevamente.");
                 return false;
             }
+            registroSeleccionado = registroIngresado;
             return true;
         }
     }

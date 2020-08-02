@@ -11,7 +11,7 @@ namespace ConsoleApp1
         public static string carreraSeleccionada;
         public static void verCarreras()
         {
-            // IMPRIME CARRERAS EN PANTALLA Y DEVUELVE NUMERO DE CARRERA SELECCIONADA
+            // IMPRIME CARRERAS EN PANTALLA
             Console.WriteLine("CARRERAS DE LA FACULTAD:" + Environment.NewLine);
             foreach (var carrera in Helper.listaMaestroCarreras)
             {

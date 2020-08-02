@@ -20,12 +20,15 @@ namespace ConsoleApp1
             } while (!Alumno.registroEsValido(Console.ReadLine()));
 
             Console.WriteLine(Environment.NewLine + "Bienvenido/a " + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0] + ' ' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1] + Environment.NewLine);
-            while (Materia.indicesSeleccionados.Count < 3)
+           
+
+            while (Materia.indicesSeleccionados.Count < 3 && Materia.quiereAnotarse())
             {
-                Console.WriteLine(Environment.NewLine + "Te quedan " + (3 - Materia.indicesSeleccionados.Count).ToString() + " materia/s para elegir" + Environment.NewLine);
                 Carrera.elegirCarrera();
                 Materia.elegirMaterias();
             }
+            
+
             Materia.generarSolicitudInscripcion();
             Console.WriteLine(Environment.NewLine +  "Tocá enter para cerrar el programa");
             Console.ReadLine();
