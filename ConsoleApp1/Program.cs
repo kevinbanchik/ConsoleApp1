@@ -16,7 +16,7 @@ namespace ConsoleApp1
 
             do
             {
-                Console.WriteLine(Environment.NewLine + "Ingresá tu número de registro");
+                Console.WriteLine(Environment.NewLine + "Ingresá tu número de registro y presiona ENTER");
             } while (!Alumno.registroEsValido(Console.ReadLine()));
 
             Console.WriteLine(Environment.NewLine + "Bienvenido/a " + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0] + ' ' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1] + Environment.NewLine);

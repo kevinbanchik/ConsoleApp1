@@ -23,7 +23,7 @@ namespace ConsoleApp1
             verCarreras();
             do
             {
-                Console.WriteLine("Ingresá el NÚMERO de la carrera de las materias a las cuales te quieras anotar" + Environment.NewLine);
+                Console.WriteLine("Ingresá el NÚMERO de la carrera de las materias a las cuales te quieras anotar y presiona ENTER." + Environment.NewLine);
             } while (!carreraEsValida(Console.ReadLine()));
         }
 

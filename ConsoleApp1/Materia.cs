@@ -41,7 +41,7 @@ namespace ConsoleApp1
             verMateriasParaAlumno();
             do
             {
-                Console.WriteLine("Ingresá los IDENTIFICADORES de los cursos elegidos separados por una coma (Ejemplo: 0,2,3). Recordá que podés elegir solo 1 curso por materia, y hasta 3 cursos en total." + Environment.NewLine);
+                Console.WriteLine("Ingresá los IDENTIFICADORES de los cursos elegidos separados por una coma (Ejemplo: 0,2,3). Recordá que podés elegir solo 1 curso por materia, y hasta 3 cursos en total. Al finalizar presiona ENTER." + Environment.NewLine);
             } while (!materiaEsValida(Console.ReadLine()));
         }
 
