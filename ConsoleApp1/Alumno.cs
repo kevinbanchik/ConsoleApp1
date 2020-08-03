@@ -58,10 +58,20 @@ namespace ConsoleApp1
         {
             // MUESTRA CANTIDAD DE MATERIAS POSIBLES PARA INSCRIBIRSE
             // PRESIONA 'ENTER' SI QUIERE ANOTARSE
-            Console.WriteLine(Environment.NewLine + "Te quedan " + (3 - Materia.indicesSeleccionados.Count).ToString() + " materia/s para elegir" + Environment.NewLine);
-            Console.WriteLine("Queres anotarte? Presiona Enter");
-            ConsoleKeyInfo tecla = Console.ReadKey();
-            if (Equals(ConsoleKey.Enter, tecla.Key))
+            ConsoleKeyInfo tecla;
+            do
+            {
+                if (Materia.indicesSeleccionados.Count == 0)
+                {
+                    Console.WriteLine(Environment.NewLine + "Presioná la tecla A para inscribirte o la tecla B para solo ver tu oferta de materias");
+                } else
+                {
+                    Console.WriteLine(Environment.NewLine + "Presioná la tecla A para inscribirte a otras materias o la tecla B para finalizar la inscripción");
+                }
+                tecla = Console.ReadKey();
+            } while (!Equals(ConsoleKey.A, tecla.Key) && !Equals(ConsoleKey.B, tecla.Key));
+            
+            if (Equals(ConsoleKey.A, tecla.Key))
             {
                 //Console.WriteLine(Environment.NewLine + "apretaste enter " + tecla.Key);
                 return true;

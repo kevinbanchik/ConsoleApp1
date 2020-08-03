@@ -12,7 +12,7 @@ namespace ConsoleApp1
         public static void verCarreras()
         {
             // IMPRIME CARRERAS EN PANTALLA
-            Console.WriteLine("CARRERAS DE LA FACULTAD:" + Environment.NewLine);
+            Console.WriteLine(Environment.NewLine + "CARRERAS DE LA FACULTAD:" + Environment.NewLine);
             foreach (var carrera in Helper.listaMaestroCarreras)
             {
                 Console.WriteLine(carrera[1] + ", Numero: " + carrera[0]);

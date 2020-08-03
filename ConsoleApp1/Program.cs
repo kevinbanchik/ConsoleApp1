@@ -21,11 +21,22 @@ namespace ConsoleApp1
 
             Console.WriteLine(Environment.NewLine + "Bienvenido/a " + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0] + ' ' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1] + Environment.NewLine);
 
-
-            while (Materia.indicesSeleccionados.Count < 3 && Alumno.quiereAnotarse())
+            while (Materia.indicesSeleccionados.Count < 3)
             {
-                Carrera.elegirCarrera();
-                Materia.elegirMaterias();
+                if (Alumno.quiereAnotarse())
+                {
+                    Carrera.elegirCarrera();
+                    Materia.elegirMaterias();
+                } else if(Materia.indicesSeleccionados.Count > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    Carrera.elegirCarrera();
+                    Materia.verMateriasParaAlumno();
+                    break;
+                }
             }
 
             if (Materia.indicesSeleccionados.Count > 0)
