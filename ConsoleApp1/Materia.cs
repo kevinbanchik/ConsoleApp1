@@ -176,7 +176,7 @@ namespace ConsoleApp1
             {
                 try
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter("solicitud.csv", true))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter("solicitud_" + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0] + '_' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1] + ".csv", false))
                     {
                         file.WriteLine(materia[0] + ';' + materia[1] + ';' + materia[2] + ';' + materia[3] + ';' + materia[4]);
                         Console.WriteLine("Materia: " + materia[3] + ", Curso: " + materia[4] + ", Identificador único: " + materia[0]);

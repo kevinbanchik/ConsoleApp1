@@ -6,7 +6,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Helper.convertirArchivosMaestros("maestroalumnos.csv", "maestromaterias.csv", "maestrocarreras.csv");
+            Helper.convertirArchivosMaestros("maestroalumnosregulares.csv", "maestromaterias.csv", "maestrocarreras.csv");
             Console.WriteLine("Bienvenido/a al Sistema de Solicitud de Inscripción".ToUpper() + Environment.NewLine);
 
             Alumno.ingresarRegistro();
