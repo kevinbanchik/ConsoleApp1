@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -171,12 +172,13 @@ namespace ConsoleApp1
 
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine("SOLICITUD DE INSCRIPCIÓN DE " + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0].ToUpper() + ' ' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1].ToUpper() + Environment.NewLine);
+            File.Delete("solicitud_" + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0] + '_' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1] + ".csv");
 
-            foreach(var materia in listaMateriasElegidas)
+            foreach (var materia in listaMateriasElegidas)
             {
                 try
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter("solicitud_" + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0] + '_' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1] + ".csv", false))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter("solicitud_" + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][0] + '_' + Helper.listaMaestroAlumnos[Alumno.indiceAlumnoLogueado][1] + ".csv", true))
                     {
                         file.WriteLine(materia[0] + ';' + materia[1] + ';' + materia[2] + ';' + materia[3] + ';' + materia[4]);
                         Console.WriteLine("Materia: " + materia[3] + ", Curso: " + materia[4] + ", Identificador único: " + materia[0]);
