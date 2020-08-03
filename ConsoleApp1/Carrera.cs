@@ -12,7 +12,8 @@ namespace ConsoleApp1
         public static void verCarreras()
         {
             // IMPRIME CARRERAS EN PANTALLA
-            Console.WriteLine(Environment.NewLine + "CARRERAS DE LA FACULTAD:" + Environment.NewLine);
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("Carreras de la Facultad:".ToUpper()  + Environment.NewLine);
             foreach (var carrera in Helper.listaMaestroCarreras)
             {
                 Console.WriteLine(carrera[1] + ", Numero: " + carrera[0]);
@@ -23,15 +24,22 @@ namespace ConsoleApp1
             verCarreras();
             do
             {
-                Console.WriteLine("Ingresá el NÚMERO de la carrera de las materias a las cuales te quieras anotar y presiona ENTER." + Environment.NewLine);
+                Console.ResetColor();
+                Console.WriteLine(Environment.NewLine + "Ingresá el NÚMERO de la carrera de las materias a las cuales te quieras anotar y presiona ENTER." + Environment.NewLine);
             } while (!carreraEsValida(Console.ReadLine()));
         }
 
         private static bool carreraEsValida(string carreraIngresada)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
+            if (carreraIngresada.Length == 0)
+            {
+                Console.WriteLine("Por favor ingrese un número válido de una carrera");
+                return false;
+            }
             if (carreraIngresada.Length > 1)
             {
-                Console.WriteLine("Solo puede ingresar hasta 1 digito numérico");
+                Console.WriteLine("Solo puede ingresar 1 digito numérico entre 1 y 5");
                 return false;
             }
             if (!int.TryParse(carreraIngresada, out int carreraEnFormatoNumerico))
@@ -45,6 +53,7 @@ namespace ConsoleApp1
                 return false;
             }
             carreraSeleccionada = carreraIngresada;
+            Console.ResetColor();
             return true;
         }
     }

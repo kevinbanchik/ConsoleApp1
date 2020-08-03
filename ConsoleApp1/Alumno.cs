@@ -10,6 +10,15 @@ namespace ConsoleApp1
     {
         public static int indiceAlumnoLogueado;
         public static string registroSeleccionado;
+        public static void ingresarRegistro()
+        {
+            do
+            {
+                Console.ResetColor();
+                Console.WriteLine(Environment.NewLine + "Ingresá tu número de registro y presioná ENTER");
+            } while (!registroEsValido(Console.ReadLine()));
+
+        }
         public static bool existeAlumno(string registroIngresado, List<string[]> maestroAlumnos)
         {
             int i = 0;
@@ -30,6 +39,12 @@ namespace ConsoleApp1
 
         public static bool registroEsValido(string registroIngresado)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
+            if (registroIngresado.Length == 0)
+            {
+                Console.WriteLine("Por favor ingrese un registro");
+                return false;
+            }
             if (registroIngresado.Length > 6 )
             {
                 Console.WriteLine("El registro solo puede tener hasta 6 digitos numéricos");
@@ -45,40 +60,39 @@ namespace ConsoleApp1
                 Console.WriteLine("El registro tiene que ser mayor a 1 y menor a 999999");
                 return false;
             }
-            if (!existeAlumno(registroIngresado, Helper.listaMaestroAlumnos))
+            if (!existeAlumno(registroEnFormatoNumerico.ToString(), Helper.listaMaestroAlumnos))
             {
                 Console.WriteLine("No existe ningún alumno con ese número de registro. Ingreselo nuevamente.");
                 return false;
             }
-            registroSeleccionado = registroIngresado;
+            registroSeleccionado = registroEnFormatoNumerico.ToString();
+            Console.ResetColor();
             return true;
         }
 
         public static bool quiereAnotarse()
         {
-            // MUESTRA CANTIDAD DE MATERIAS POSIBLES PARA INSCRIBIRSE
-            // PRESIONA 'ENTER' SI QUIERE ANOTARSE
             ConsoleKeyInfo tecla;
             do
             {
-                if (Materia.indicesSeleccionados.Count == 0)
+                if (Materia.materiasElegidas.Count == 0)
                 {
                     Console.WriteLine(Environment.NewLine + "Presioná la tecla A para inscribirte o la tecla B para solo ver tu oferta de materias");
                 } else
                 {
                     Console.WriteLine(Environment.NewLine + "Presioná la tecla A para inscribirte a otras materias o la tecla B para finalizar la inscripción");
                 }
+                Console.ResetColor();
                 tecla = Console.ReadKey();
+                Console.ForegroundColor = ConsoleColor.Red;
             } while (!Equals(ConsoleKey.A, tecla.Key) && !Equals(ConsoleKey.B, tecla.Key));
-            
+            Console.ResetColor();
             if (Equals(ConsoleKey.A, tecla.Key))
             {
-                //Console.WriteLine(Environment.NewLine + "apretaste enter " + tecla.Key);
                 return true;
             }
             else
             {
-                //Console.WriteLine(Environment.NewLine + "apretaste " + tecla.Key);
                 return false;
             }
         }
